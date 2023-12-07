@@ -2,17 +2,18 @@ import Footer from './components/layouts/Footer'
 import Header from './components/layouts/Header'
 
 // React Router
-import { RouterProvider } from "react-router-dom";
-import router from './router'
+import { Outlet, useLocation } from "react-router-dom";
 
 function App() {
-
+  const location = useLocation();
+  console.log(location);
+  
   return (
     <>
       <Header />
 
       <main className='w-full min-h-body'>
-        <RouterProvider router={router} />
+          <Outlet />
       </main>
 
       <Footer />
