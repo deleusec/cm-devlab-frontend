@@ -6,17 +6,16 @@ import Home from "../pages/Home";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <App/>,
-        errorElement: <ErrorPage/>,
-        children:[
+        element: <App />,
+        errorElement: <ErrorPage />,
+        children: [
             {
                 path: "/",
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "/dashboard",
-                element: <Dashboard/>
+                element: <Dashboard />
             }
         ]
     }
