@@ -1,10 +1,13 @@
+@import "./assets/fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     /* Refactor basic elements here */
-
+    body {
+        @apply font-poppins;
+    }
     h1 {
         @apply text-4xl font-bold text-gray-900;
     }

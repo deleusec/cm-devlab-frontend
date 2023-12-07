@@ -11,7 +11,7 @@ export default {
         "secondary": "#1A1B41",
       },
       fontFamily: {
-        "sans": ["Poppins", "sans-serif"],
+        "poppins": ["Poppins", "sans-serif"],
       },
       minHeight: {
         "header" : "80px",
