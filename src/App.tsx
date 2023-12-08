@@ -3,7 +3,7 @@ import Layout from '@components/layouts/Layout'
 
 // React Router
 import { Outlet } from "react-router-dom";
-import Sidebar from './components/Sidebar';
+import Sidebar from '@components/layouts/Sidebar';
 
 // Overlayscrollbars
 import 'overlayscrollbars/overlayscrollbars.css';
