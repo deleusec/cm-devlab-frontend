@@ -16,4 +16,29 @@
     h2 {
         @apply text-2xl font-semibold text-secondary;
     }
+
+    h3 {
+        @apply text-xl font-semibold text-secondary;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

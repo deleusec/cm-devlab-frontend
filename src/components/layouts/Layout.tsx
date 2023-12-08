@@ -1,5 +1,4 @@
 import Header from "./Header";
-import Footer from "./Footer";
 
 function Layout({ children }: { children: React.ReactNode }) {
     return (
@@ -8,7 +7,6 @@ function Layout({ children }: { children: React.ReactNode }) {
             <main className='w-full min-h-body'>
                 {children}
             </main>
-            <Footer />
         </>
     );
 }

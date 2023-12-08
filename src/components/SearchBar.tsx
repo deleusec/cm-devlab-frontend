@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Search from '@icons/search';
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 function SearchBar() {
     const [isFocused, setIsFocused] = useState(false);
     const handleFocus = () => {
         setIsFocused(!isFocused);
     }
     return (
-        <div className={`flex h-10 rounded-full bg-[#D9D9D9] w-full max-w-[600px] ${isFocused && 'border border-secondary'}`}>
+        <div className={`flex h-10 rounded-full bg-light-gray w-full max-w-[600px] ${isFocused && 'outline outline-1 outline-secondary'}`}>
             <input id="search" className="bg-transparent border-0 focus-visible:outline-0 flex h-full w-full px-6" type="text" placeholder="Search" onFocus={handleFocus} onBlur={handleFocus} />
             <label htmlFor="search" className="flex items-center h-full pr-4 cursor-pointer text-secondary">
-                <Search />
+                <MagnifyingGlassIcon className="w-5" />
             </label>
         </div>
     );
