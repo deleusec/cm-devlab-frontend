@@ -8,7 +8,12 @@
     body {
         @apply font-poppins;
     }
+
     h1 {
-        @apply text-4xl font-bold text-gray-900;
+        @apply text-3xl font-light text-secondary;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold text-secondary;
     }
 }
