@@ -13,7 +13,7 @@ function Home() {
                     <h2>Home page</h2>
                 </div>
             </div>
-            <div className='min-h-full bg-light-gray'>
+            <div className='min-h-full bg-light-gray '>
                 <div className='flex gap-4 p-[50px]'>
                     <ButtonApp theme="dark" text="Filtres">
                         <ClockIcon className='w-4 stroke-2' />
@@ -30,7 +30,7 @@ function Home() {
                 </div>
 
                 <div className='px-[50px]'>
-                    <div className='w-full px-[50px] py-[45px] bg-white rounded-xl'>
+                    <div className='w-full px-[50px] py-[45px] bg-white rounded-xl shadow-card'>
                         <h3 className='mb-16'>Liste des agents</h3>
                         <div className='flex gap-4'>
                             <ButtonApp theme="dark" text="Filtres">

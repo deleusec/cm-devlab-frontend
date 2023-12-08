@@ -5,15 +5,19 @@ import Layout from '@components/layouts/Layout'
 import { Outlet } from "react-router-dom";
 import Sidebar from './components/Sidebar';
 
+// Overlayscrollbars
+import 'overlayscrollbars/overlayscrollbars.css';
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+
 function App() {
 
   return (
     <Layout>
       <div className='flex h-body'>
         <Sidebar />
-        <div className="flex-1 h-body overflow-y-auto">
+        <OverlayScrollbarsComponent element='div' options={{ scrollbars : { autoHide: 'scroll'}}} defer className='flex-1'>
           <Outlet />
-        </div>
+        </OverlayScrollbarsComponent>
       </div>
     </Layout>
   )
