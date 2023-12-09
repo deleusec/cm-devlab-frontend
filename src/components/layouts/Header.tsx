@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
+import { BellIcon } from "@heroicons/react/24/outline";
 
 function Header() {
     return (
@@ -8,7 +9,9 @@ function Header() {
             <div className="col-span-3 flex justify-center">
                 <SearchBar />
             </div>
-            <div className="col-span-1"></div>
+            <div className="col-span-1 justify-self-end">
+                <BellIcon className="w-6 stroke-2 text-secondary" />
+            </div>
         </header>
     );
 }
