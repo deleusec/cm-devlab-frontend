@@ -4,6 +4,8 @@ import ErrorPage from "@/pages/ErrorPage";
 import Jobs from "@/pages/Jobs";
 import Agents from "@/pages/Agents";
 import Agent from "@/pages/Agent";
+import Login from "@/pages/authentication/Login";
+import ForgotPassword from "@/pages/authentication/ForgotPassword";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
                 element: <Jobs />
             }
         ]
+    },
+    {
+        path: "/login",
+        element: <Login />
+    },
+    {
+        path: "/forgot-password",
+        element: <ForgotPassword />
     }
 ]);
 
