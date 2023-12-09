@@ -10,7 +10,7 @@ function Login() {
                 <h1>Se connecter</h1>
                 <FormInput type="email" placeholder="email" />
                 <FormInput type="password" placeholder="password" />
-                <FormButton text="Se connecter" />      
+                <FormButton text="Se connecter" theme="dark" />      
                 <Link to={"/forgot-password"} className="text-center text-secondary font-semibold">Mot de passe oublié ?</Link>
             </div>
         </div>

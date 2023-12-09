@@ -16,7 +16,7 @@ function Agents() {
     return (
         <>
             <div className='flex flex-col gap-3 p-[50px]'>
-                <h1>Bonjour Corentin !</h1>
+                <h1>Bonjour Aileen !</h1>
                 <div className='flex gap-3'>
                     <HomeIcon className='w-5 stroke-2' />
                     <h2>Accueil</h2>
@@ -59,55 +59,49 @@ function Agents() {
                         <thead>
                             <tr className='border-b-[1px] border-[#E5E5E5]'>
                                 <th></th>
-                                <th className='font-semibold py-4 text-left text-gray'>Nom</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Prénom</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Email</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Téléphone</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Date de naissance</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Date d'embauche</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Poste</th>
-                                <th className='font-semibold py-4 text-left text-gray'>Risques d'usure</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Nom</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Prénom</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Email</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Téléphone</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Date de naissance</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Date d'embauche</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Poste</th>
+                                <th className='font-semibold py-4 text-left text-secondary'>Risques d'usure</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className='border-b-[1px] border-[#E5E5E5]'>
-                                <td className='py-4 text-left'><Link className='text-secondary' to={'agent/1'}><EyeIcon className='w-5 stroke-2' /></Link></td>
-                                <td className='py-4 text-left'>Doe</td>
-                                <td className='py-4 text-left'>John</td>
-                                <td className='py-4 text-left'>
-                                    <a href="mailto:johndoe@test.fr">johndoe@test.fr</a>
-                                </td>
-                                <td className='py-4 text-left'>06 12 34 56 78</td>
-                                <td className='py-4 text-left'>01/01/1990</td>
-                                <td className='py-4 text-left'>01/01/2021</td>
-                                <td className='py-4 text-left'>Développeur</td>
-                                <td className='py-4 text-left'>0%</td>
+                            <tr className='border-b-[1px] border-gray-200'>
+                                <td className='text-sm text-dark-gray py-4 text-left'><Link className='text-secondary' to={'agent/1'}><EyeIcon className='w-5 stroke-2' /></Link></td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>Doe</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>John</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>johndoe@test.fr</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>06 12 34 56 78</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>01/01/1990</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>01/01/2021</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>Développeur</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>0%</td>
                             </tr>
-                            <tr className='border-b-[1px] border-[#E5E5E5]'>
-                                <td className='py-4 text-left'><Link className='text-secondary' to={'agent/1'}><EyeIcon className='w-5 stroke-2' /></Link></td>
-                                <td className='py-4 text-left'>Doe</td>
-                                <td className='py-4 text-left'>John</td>
-                                <td className='py-4 text-left'>
-                                    <a href="mailto:johndoe@test.fr">johndoe@test.fr</a>
-                                </td>
-                                <td className='py-4 text-left'>06 12 34 56 78</td>
-                                <td className='py-4 text-left'>01/01/1990</td>
-                                <td className='py-4 text-left'>01/01/2021</td>
-                                <td className='py-4 text-left'>Développeur</td>
-                                <td className='py-4 text-left'>0%</td>
+                            <tr className='border-b-[1px] border-gray-200'>
+                                <td className='text-sm text-dark-gray py-4 text-left'><Link className='text-secondary' to={'agent/1'}><EyeIcon className='w-5 stroke-2' /></Link></td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>Doe</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>John</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>johndoe@test.fr</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>06 12 34 56 78</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>01/01/1990</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>01/01/2021</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>Développeur</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>0%</td>
                             </tr>
-                            <tr className='border-b-[1px] border-[#E5E5E5]'>
-                                <td className='py-4 text-left'><Link className='text-secondary' to={'agent/1'}><EyeIcon className='w-5 stroke-2' /></Link></td>
-                                <td className='py-4 text-left'>Doe</td>
-                                <td className='py-4 text-left'>John</td>
-                                <td className='py-4 text-left'>
-                                    <a href="mailto:johndoe@test.fr">johndoe@test.fr</a>
-                                </td>
-                                <td className='py-4 text-left'>06 12 34 56 78</td>
-                                <td className='py-4 text-left'>01/01/1990</td>
-                                <td className='py-4 text-left'>01/01/2021</td>
-                                <td className='py-4 text-left'>Développeur</td>
-                                <td className='py-4 text-left'>0%</td>
+                            <tr className='border-b-[1px] border-gray-200'>
+                                <td className='text-sm text-dark-gray py-4 text-left'><Link className='text-secondary' to={'agent/1'}><EyeIcon className='w-5 stroke-2' /></Link></td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>Doe</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>John</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>johndoe@test.fr</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>06 12 34 56 78</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>01/01/1990</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>01/01/2021</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>Développeur</td>
+                                <td className='text-sm text-dark-gray py-4 text-left'>0%</td>
                             </tr>
                         </tbody>
                     </table>

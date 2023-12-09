@@ -1,4 +1,4 @@
-import { HomeIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, BriefcaseIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import { useMatch } from 'react-router-dom';
 
@@ -24,6 +24,9 @@ function Sidebar() {
         </ul>
       </nav>
       <div className='w-10 h-[2px] bg-white'></div>
+      <Link title='Déconnexion' className='flex flex-col items-center gap-2 hover:text-primary text-white' to='/login'>
+        <ArrowRightOnRectangleIcon className='w-5 stroke-2' />
+      </Link>
     </div>
   );
 }
