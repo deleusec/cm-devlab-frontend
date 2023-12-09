@@ -10,7 +10,7 @@ FormInput.defaultProps = {
 function FormInput(props: FormInputProps) {
     return ( 
         <>
-            <input type={props.type} placeholder={props.placeholder} className="w-full p-5 outline outline-2 rounded-md outline-secondary" />
+            <input type={props.type} placeholder={props.placeholder} className="w-full p-4 outline outline-2 rounded-md outline-secondary" />
         </>
      );
 }
