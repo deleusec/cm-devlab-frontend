@@ -9,11 +9,10 @@ export default {
       colors: {
         "primary": "#BAFF29",
         "secondary": "#1A1B41",
-        "light-gray": "#F4F4F4"
+        "light-gray": "#F4F4F4",
       },
       textColor: {
         "gray": "#4F4F4F",
-        "medium-gray": "#828282",
       },
       fontFamily: {
         "poppins": ["Poppins", "sans-serif"],
