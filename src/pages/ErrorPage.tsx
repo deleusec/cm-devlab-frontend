@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-import Layout from "../components/layouts/Layout";
+import Layout from "../components/layouts/templates/Layout";
 
 interface ErrorResponse {
     statusText?: string;

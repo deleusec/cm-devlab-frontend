@@ -1,8 +1,11 @@
-import { BriefcaseIcon, ClockIcon, ChartBarIcon, StarIcon, BoltIcon } from '@heroicons/react/24/outline';
-import ButtonApp from '@/components/ButtonApp';
-import CardListing from '@/components/CardListing';
+import { useState } from 'react';
+import ButtonApp from '@/components/app/ButtonApp';
+import CardListing from '@/components/app/CardListing';
+import { BriefcaseIcon, ChartBarIcon, AdjustmentsVerticalIcon, ArrowsUpDownIcon, BookmarkIcon, ListBulletIcon } from '@heroicons/react/24/outline';
+
 
 function Jobs() {
+    const [content, setContent] = useState<'list' | 'stats' | 'bookmarks'>('list');
     return (
         <>
             <div className='flex flex-col gap-3 p-[50px]'>
@@ -14,28 +17,26 @@ function Jobs() {
             </div>
             <div className='min-h-full bg-light-gray '>
                 <div className='flex gap-4 p-[50px]'>
-                    <ButtonApp theme="dark" text="Filtres">
-                        <ClockIcon className='w-4 stroke-2' />
+                    <ButtonApp theme={'light'} active={content === 'list' && true} text={"Liste"} onClick={() => setContent('list')}>
+                        <ListBulletIcon className='w-4 stroke-2' />
                     </ButtonApp>
-                    <ButtonApp text="Suggestions">
-                        <BoltIcon className='w-4 stroke-2' />
-                    </ButtonApp>
-                    <ButtonApp text="Stats">
+                    <ButtonApp theme={'light'} active={content === 'stats' && true} text="Stats" onClick={() => setContent('stats')}>
                         <ChartBarIcon className='w-4 stroke-[1.5]' />
                     </ButtonApp>
-                    <ButtonApp theme="dark" text="Favoris">
-                        <StarIcon className='w-4 stroke-2' />
+                    <ButtonApp theme={'light'} active={content === 'bookmarks' && true} text="Archivés" onClick={() => setContent('bookmarks')}>
+                        <BookmarkIcon className='w-4 stroke-2' />
                     </ButtonApp>
                 </div>
 
                 <CardListing title="Liste des métiers">
-                    <table>
-                        <thead>
-                            <tr>
-                                
-                            </tr>
-                        </thead>
-                    </table>
+                    <div className='flex gap-4' id="sort">
+                        <ButtonApp theme={"dark"} text="Filtres">
+                            <AdjustmentsVerticalIcon className='w-4 stroke-2' />
+                        </ButtonApp>
+                        <ButtonApp theme="light" text="Trier par">
+                            <ArrowsUpDownIcon className='w-4 stroke-2' />
+                        </ButtonApp>
+                    </div>
                 </CardListing>
             </div>
         </>

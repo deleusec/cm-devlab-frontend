@@ -1,5 +1,5 @@
 
-import Layout from '@components/layouts/Layout'
+import Layout from '@/components/layouts/templates/Layout'
 
 // React Router
 import { Outlet } from "react-router-dom";

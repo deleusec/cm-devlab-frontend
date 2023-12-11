@@ -4,7 +4,7 @@ import ErrorPage from "@/pages/ErrorPage";
 import Jobs from "@/pages/Jobs";
 import Agents from "@/pages/Agents";
 import Agent from "@/pages/Agent";
-import Users from "@/pages/Users";
+import Admins from "@/pages/Admins";
 import Login from "@/pages/authentication/Login";
 import ForgotPassword from "@/pages/authentication/ForgotPassword";
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/users",
-                element: <Users />
+                element: <Admins />
             }
         ]
     },

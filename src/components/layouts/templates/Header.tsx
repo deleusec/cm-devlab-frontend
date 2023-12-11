@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBar";
+import SearchBar from "../../SearchBar";
 import { BellIcon } from "@heroicons/react/24/outline";
 
 function Header() {
