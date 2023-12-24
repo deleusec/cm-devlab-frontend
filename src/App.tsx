@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<DashboardLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/agents" element={<Agents />} />
-          <Route path="/agent/:id" element={<Agent />} />
+          <Route path="/agents/:id" element={<Agent />} />
           <Route path="/metiers" element={<Jobs />} />
           <Route path="/users" element={<Admins />} />
         </Route>
