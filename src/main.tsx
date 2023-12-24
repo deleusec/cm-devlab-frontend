@@ -1,10 +1,18 @@
 import ReactDOM from 'react-dom/client'
+import React from 'react'
 import './index.css'
+import App from './App'
 
 // React Router
-import { RouterProvider } from 'react-router-dom'
-import router from './router'
+import { BrowserRouter } from 'react-router-dom'
+
+// Overlayscrollbars
+import 'overlayscrollbars/overlayscrollbars.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
 )
