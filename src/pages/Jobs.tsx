@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ButtonApp from '@/components/app/ButtonApp';
-import CardListing from '@/components/app/CardListing';
+import CardApp from '@/components/app/CardApp';
 import { BriefcaseIcon, ChartBarIcon, AdjustmentsVerticalIcon, ArrowsUpDownIcon, BookmarkIcon, ListBulletIcon } from '@heroicons/react/24/outline';
 
 
@@ -28,7 +28,7 @@ function Jobs() {
                     </ButtonApp>
                 </div>
 
-                <CardListing title="Liste des métiers">
+                <CardApp title="Liste des métiers">
                     <div className='flex gap-4' id="sort">
                         <ButtonApp theme={"dark"} text="Filtres">
                             <AdjustmentsVerticalIcon className='w-4 stroke-2' />
@@ -37,7 +37,7 @@ function Jobs() {
                             <ArrowsUpDownIcon className='w-4 stroke-2' />
                         </ButtonApp>
                     </div>
-                </CardListing>
+                </CardApp>
             </div>
         </>
     );

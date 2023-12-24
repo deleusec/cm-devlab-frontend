@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ButtonApp from '@/components/app/ButtonApp';
-import CardListing from '@/components/app/CardListing';
+import CardApp from '@/components/app/CardApp';
 import { HomeIcon, ArrowsUpDownIcon, ListBulletIcon, BookmarkIcon, ChartBarIcon, AdjustmentsVerticalIcon } from '@heroicons/react/24/outline';
 
 
@@ -28,7 +28,7 @@ function Agents() {
                     </ButtonApp>
                 </div>
 
-                <CardListing title="Liste des agents">
+                <CardApp title="Liste des agents">
                     <div className='flex gap-4' id="sort">
                         <ButtonApp theme={"dark"} text="Filtres">
                             <AdjustmentsVerticalIcon className='w-4 stroke-2' />
@@ -46,7 +46,7 @@ function Agents() {
                     {content === 'bookmarks' && <div className="pt-[50px] h-[425px]">
                         Agents archivés
                     </div>}
-                </CardListing>
+                </CardApp>
             </div>
         </>
     );
