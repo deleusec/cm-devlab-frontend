@@ -47,15 +47,15 @@ function JobsCreate() {
                         <FormTextArea rows={6} name="jobDescription" id="jobDescription" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
                     </FormLabel>
                     <div>
-                        <label htmlFor="nightShift" className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, night_shift: !jobFactors.night_shift })}>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, night_shift: !jobFactors.night_shift })}>
                             <FormCheckbox name="nightShift" id="nightShift" checked={jobFactors.night_shift} />
                             <span className="mr-2">Travail de nuit</span>
-                        </label>
+                        </div>
 
-                        <label htmlFor="physicalFactor" className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, physical: !jobFactors.physical })}>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, physical: !jobFactors.physical })}>
                             <FormCheckbox name="physicalFactor" id="physicalFactor" checked={jobFactors.physical} />
                             <span className="mr-2">Travail physique</span>
-                        </label>
+                        </div>
                     </div>
 
                     <div className='flex justify-end'>

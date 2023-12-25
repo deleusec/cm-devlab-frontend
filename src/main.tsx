@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom'
 // Overlayscrollbars
 import 'overlayscrollbars/overlayscrollbars.css';
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>

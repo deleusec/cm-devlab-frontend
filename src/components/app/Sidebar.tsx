@@ -1,12 +1,13 @@
 import { HomeIcon, BriefcaseIcon, ArrowRightOnRectangleIcon, ArchiveBoxIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
-import { useMatch } from 'react-router-dom';
+import { useMatch, useLocation } from 'react-router-dom';
 
 function Sidebar() {
   const isHome = useMatch('/');
-  const isAgents = useMatch('/agents');
-  const isJobs = useMatch('/metiers');
-  const isUsers = useMatch('/users');
+  const isAgents = useLocation().pathname.includes('/agents');
+  const isJobs = useLocation().pathname.includes('/metiers');
+  const isAdmins = useLocation().pathname.includes('/admins');
+  
   return (
     <div id='sidebar' className='py-[30px] w-20 min-h-body bg-secondary rounded-tr-xl flex flex-col gap-8 items-center'>
       <nav>
@@ -30,9 +31,9 @@ function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link title='Accueil' className={`flex flex-col items-center gap-2 hover:text-primary ${isUsers ? "text-primary" : "text-white"}`} to='/users'>
+            <Link title='Admins' className={`flex flex-col items-center gap-2 hover:text-primary ${isAdmins ? "text-primary" : "text-white"}`} to='/admins'>
               <ArchiveBoxIcon className='w-5 stroke-2' />
-              {isUsers && <span className='text-xs font-medium'>Users</span>}
+              {isAdmins && <span className='text-xs font-medium'>Admins</span>}
             </Link>
           </li>
         </ul>
