@@ -1,12 +1,12 @@
 
-interface CardListingProps {
+interface CardAppProps {
     title?: string;
     children: React.ReactNode;
 }
 
-function CardListing(props: CardListingProps) {
+function CardApp(props: CardAppProps) {
     return (
-        <div className='px-[50px]'>
+        <div className='px-[50px] w-full'>
             <div className='flex flex-col w-full px-[50px] py-[45px] bg-white rounded-xl'>
                 {props.title && <h3 className="mb-16">{props.title}</h3>}
                 {props.children}
@@ -15,4 +15,4 @@ function CardListing(props: CardListingProps) {
     );
 }
 
-export default CardListing;
+export default CardApp;

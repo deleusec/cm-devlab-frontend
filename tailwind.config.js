@@ -9,6 +9,7 @@ export default {
       colors: {
         "primary": "#BAFF29",
         "secondary": "#1A1B41",
+        "secondary-light": "#2D2E5D",
         "light-gray": "#F4F4F4",
       },
       textColor: {

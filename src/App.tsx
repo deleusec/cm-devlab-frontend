@@ -7,6 +7,7 @@ import DashboardLayout from '@/layouts/DashboardLayout'
 // Pages
 import Home from '@/pages/Home'
 import Agents from './pages/Agents'
+import AgentsCreate from './pages/AgentsCreate'
 import Agent from './pages/Agent'
 import Jobs from './pages/Jobs'
 import Admins from './pages/Admins'
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<DashboardLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/agents" element={<Agents />} />
+          <Route path="/agents/create" element={<AgentsCreate />} />
           <Route path="/agents/:id" element={<Agent />} />
           <Route path="/metiers" element={<Jobs />} />
           <Route path="/users" element={<Admins />} />
