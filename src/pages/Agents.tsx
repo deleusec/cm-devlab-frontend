@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import ButtonApp from '@/components/app/ButtonApp';
 import CardApp from '@/components/app/CardApp';
-import { HomeIcon, ArrowsUpDownIcon, ListBulletIcon, BookmarkIcon, ChartBarIcon, AdjustmentsVerticalIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, ArrowsUpDownIcon, ListBulletIcon, BookmarkIcon, ChartBarIcon, AdjustmentsVerticalIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 
 function Agents() {
@@ -36,6 +37,12 @@ function Agents() {
                         <ButtonApp theme="light" text="Trier par">
                             <ArrowsUpDownIcon className='w-4 stroke-2' />
                         </ButtonApp>
+                        <div className='flex-1'></div>
+                        <Link to={'/agents/create'}>
+                            <ButtonApp theme="light" text="Ajouter un agent">
+                                <PlusIcon className='w-4 stroke-2' />
+                            </ButtonApp>
+                        </Link>
                     </div>
                     {content === 'list' && <div className="pt-[50px] h-[425px]">
                         Tableau des agents

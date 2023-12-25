@@ -10,6 +10,7 @@ import Agents from './pages/Agents'
 import AgentsCreate from './pages/AgentsCreate'
 import Agent from './pages/Agent'
 import Jobs from './pages/Jobs'
+import JobsCreate from './pages/JobsCreate'
 import Admins from './pages/Admins'
 import Login from './pages/authentication/Login'
 import ForgotPassword from './pages/authentication/ForgotPassword'
@@ -21,12 +22,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<DashboardLayout />}>
+        <Route element={<DashboardLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/agents/create" element={<AgentsCreate />} />
           <Route path="/agents/:id" element={<Agent />} />
           <Route path="/metiers" element={<Jobs />} />
+          <Route path="/metiers/create" element={<JobsCreate />} />
           <Route path="/users" element={<Admins />} />
         </Route>
         <Route path="/login" element={<Login />} />

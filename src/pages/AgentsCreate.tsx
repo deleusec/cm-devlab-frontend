@@ -6,6 +6,7 @@ import FormInput from "@/components/form/FormInput";
 // import FormTextArea from "@/components/form/FormTextArea";
 import FormLabel from '@/components/form/FormLabel';
 import FormSelect from '@/components/form/FormSelect';
+import BackLinkApp from '@/components/app/BackLinkApp';
 
 function AgentsCreate() {
     const [agentName, setAgentName] = useState('');
@@ -48,7 +49,10 @@ function AgentsCreate() {
     }
 
     return (
-        <div className="bg-light-gray min-h-body flex w-full justify-center py-[50px]">
+        <div className="bg-light-gray min-h-body flex flex-col w-full justify-center py-[50px]">
+            <div className='mb-[20px] ml-[50px]'>
+                <BackLinkApp />
+            </div>
             <CardApp title="Nouvel Agent">
                 <div className='space-y-6 lg:w-1/2 min-w-[300px] mb-20'>
                     <div className='flex flex-wrap w-full gap-6'>
