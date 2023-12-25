@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import ButtonApp from '@/components/app/ButtonApp';
 import CardApp from '@/components/app/CardApp';
-import { BriefcaseIcon, ChartBarIcon, AdjustmentsVerticalIcon, ArrowsUpDownIcon, BookmarkIcon, ListBulletIcon } from '@heroicons/react/24/outline';
+import { BriefcaseIcon, ChartBarIcon, AdjustmentsVerticalIcon, ArrowsUpDownIcon, BookmarkIcon, ListBulletIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 
 function Jobs() {
@@ -36,6 +37,13 @@ function Jobs() {
                         <ButtonApp theme="light" text="Trier par">
                             <ArrowsUpDownIcon className='w-4 stroke-2' />
                         </ButtonApp>
+
+                        <div className='flex-1'></div>
+                        <Link to={'/metiers/create'}>
+                            <ButtonApp theme="light" text="Ajouter un métier">
+                                <PlusIcon className='w-4 stroke-2' />
+                            </ButtonApp>
+                        </Link>
                     </div>
                 </CardApp>
             </div>
