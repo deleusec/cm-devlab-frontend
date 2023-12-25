@@ -18,8 +18,8 @@ function JobsCreate() {
         night_shift: false,
     });
 
-    const handleSubmit = () => {
-        axios.post('http://localhost:3011/jobs', {
+    const handleSubmit = async () => {
+        await axios.post('http://localhost:3011/jobs', {
             "name": jobName,
             "description": jobDescription,
             "job_field": null,

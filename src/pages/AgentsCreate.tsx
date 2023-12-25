@@ -30,11 +30,11 @@ function AgentsCreate() {
     }, []);
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const age = new Date().getFullYear() - new Date(agentBirthdate).getFullYear();
         const agentExperienceYear = new Date().getFullYear() - parseInt(agentExperience);
         
-        axios.post('http://localhost:3011/agents', {
+        await axios.post('http://localhost:3011/agents', {
             "firstName": agentName,
             "lastName": agentLastName,
             "age": age,
