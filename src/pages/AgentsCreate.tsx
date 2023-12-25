@@ -22,14 +22,30 @@ function AgentsCreate() {
     const [jobs, setJobs] = useState([]);
     const [jobId, setJobId] = useState('');
 
-    useEffect( () => {
+    useEffect(() => {
         axios.get('http://localhost:3011/jobs').then((res) => {
             setJobs(res.data);
-            console.log(res.data);
-
         });
-
     }, []);
+
+
+    const handleSubmit = () => {
+        const age = new Date().getFullYear() - new Date(agentBirthdate).getFullYear();
+        const agentExperienceYear = new Date().getFullYear() - parseInt(agentExperience);
+        
+        axios.post('http://localhost:3011/agents', {
+            "firstName": agentName,
+            "lastName": agentLastName,
+            "age": age,
+            "email": agentEmail,
+            "job_seniority": agentExperienceYear + "-01-01",
+            "post_seniority": jobStartDate,
+            "JobId": parseInt(jobId)
+        }).then((res) => {
+            console.log(res);
+        });
+        
+    }
 
     return (
         <div className="bg-light-gray min-h-body flex w-full justify-center py-[50px]">
@@ -58,9 +74,16 @@ function AgentsCreate() {
                 </div>
                 <div className='space-y-6 lg:w-1/2 min-w-[300px]'>
 
-                    <FormLabel title='Emploi' for="jobId">
-                        <FormSelect options={jobs.map((job: any) => job.name)} defaultEmpty={true} name="jobId" id="jobId" value={jobId} onChange={(e) => setJobId(e.target.value)} />
+                    <FormLabel title='Poste' for="jobId">
+                        <select id="jobId" name="jobId" value={jobId} onChange={(e) => setJobId(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-secondary focus:border-secondary block w-full p-2.5 capitalize">
+                            <option value="">-- Choisir --</option>
+                            {jobs.map((job: { name: string, id: string }) => (
+                                <option key={job.id} value={job.id}>{job.name}</option>
+                            ))}
+                        </select>
                     </FormLabel>
+
+
                     <div className='flex flex-wrap gap-6'>
                         <FormLabel title="Années d'expérience" for="agentExperience">
                             <FormInput type="number" name="agentExperience" id="agentExperience" value={agentExperience} onChange={(e) => setAgentExperience(e.target.value)} />
@@ -79,6 +102,10 @@ function AgentsCreate() {
                         {contractType === "CDD" || contractType === "Stage/Alternance" ? <FormLabel title='Date de fin' for="jobEndDate">
                             <FormInput type="date" name="jobEndDate" id="jobEndDate" value={jobEndDate} onChange={(e) => setJobEndDate(e.target.value)} />
                         </FormLabel> : null}
+                    </div>
+
+                    <div className='flex justify-end'>
+                        <button className='bg-secondary hover:bg-secondary-light active:bg-secondary text-white px-4 py-2 rounded-md' onClick={handleSubmit}>Créer</button>
                     </div>
                 </div>
             </CardApp>
