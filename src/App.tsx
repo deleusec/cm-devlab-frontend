@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<DashboardLayout />}>
+        <Route element={<DashboardLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/agents/create" element={<AgentsCreate />} />

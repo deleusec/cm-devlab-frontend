@@ -9,7 +9,7 @@ interface FormCheckboxProps {
 
 function FormCheckbox(props: FormCheckboxProps) {
     return ( 
-        <div className={`w-5 h-5 border border-secondary rounded-md cursor-pointer mr-2.5 ${props.checked && 'bg-secondary'} duration-300`}>
+        <div className={`w-5 h-5 border border-secondary rounded-md cursor-pointer mr-2.5 ${props.checked && 'bg-secondary'} duration-150`}>
             <CheckIcon className={`w-full text-white `}/>
         </div>
      );
