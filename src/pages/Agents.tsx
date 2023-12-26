@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ButtonApp from '@/components/app/ButtonApp';
 import CardApp from '@/components/app/CardApp';
-import { HomeIcon, ArrowsUpDownIcon, ListBulletIcon, BookmarkIcon, ChartBarIcon, AdjustmentsVerticalIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { ArrowsUpDownIcon, ListBulletIcon, BookmarkIcon, ChartBarIcon, AdjustmentsVerticalIcon, PlusIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
 
@@ -10,14 +10,13 @@ function Agents() {
     return (
         <>
             <div className='flex flex-col gap-3 p-[50px]'>
-                <h1>Bonjour Corentin !</h1>
                 <div className='flex gap-3'>
-                    <HomeIcon className='w-5 stroke-2' />
-                    <h2>Accueil</h2>
+                    <UsersIcon className='w-5 stroke-2' />
+                    <h2>Agents</h2>
                 </div>
             </div>
-            <div className='min-h-full bg-light-gray pb-[50px]'>
-                <div className='flex gap-4 p-[50px]'>
+            <div className='min-h-full pb-[50px]'>
+                <div className='flex gap-4 px-[50px] pb-[50px]'>
                     <ButtonApp theme={'light'} active={content === 'list' && true} text={"Liste"} onClick={()=>setContent('list')}>
                         <ListBulletIcon className='w-4 stroke-2'/>
                     </ButtonApp>

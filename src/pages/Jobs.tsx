@@ -10,14 +10,13 @@ function Jobs() {
     return (
         <>
             <div className='flex flex-col gap-3 p-[50px]'>
-                <h1>Bonjour Corentin !</h1>
                 <div className='flex gap-3'>
                     <BriefcaseIcon className='w-5 stroke-2' />
                     <h2>Métiers</h2>
                 </div>
             </div>
-            <div className='min-h-full bg-light-gray '>
-                <div className='flex gap-4 p-[50px]'>
+            <div className='min-h-full'>
+                <div className='flex gap-4 px-[50px] pb-[50px]'>
                     <ButtonApp theme={'light'} active={content === 'list' && true} text={"Liste"} onClick={() => setContent('list')}>
                         <ListBulletIcon className='w-4 stroke-2' />
                     </ButtonApp>

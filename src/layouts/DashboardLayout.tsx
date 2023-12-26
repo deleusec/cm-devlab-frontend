@@ -9,7 +9,7 @@ function DashboardLayout() {
     return (
         <>
             <Header />
-            <main className='flex w-full' >
+            <main className='flex w-full bg-light-gray' >
                 <Sidebar />
                 <OverlayScrollbarsComponent element='div' options={{ scrollbars: { autoHide: 'scroll' } }} defer className='flex-1 h-body'>
                     <Outlet />
