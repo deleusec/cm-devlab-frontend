@@ -11,7 +11,7 @@ function BackLinkApp() {
     }
 
     return ( 
-        <div onClick={handleClick} className="w-fit cursor-pointer text-secondary hover:underline duration-200">
+        <div onClick={handleClick} className="w-fit cursor-pointer text-secondary hover:underline duration-150">
             <ArrowLeftIcon className="w-3 stroke-2 mr-2 inline-block"/>
             <span className="text-sm font-medium">Retour</span>
         </div>

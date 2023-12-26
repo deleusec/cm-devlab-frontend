@@ -3,10 +3,10 @@ import axios from 'axios';
 
 import CardApp from "@/components/app/CardApp";
 import FormInput from "@/components/form/FormInput";
-// import FormTextArea from "@/components/form/FormTextArea";
 import FormLabel from '@/components/form/FormLabel';
 import FormSelect from '@/components/form/FormSelect';
 import BackLinkApp from '@/components/app/BackLinkApp';
+import FormButton from '@/components/form/FormButton';
 
 function AgentsCreate() {
     const [agentName, setAgentName] = useState('');
@@ -14,12 +14,10 @@ function AgentsCreate() {
     const [agentBirthdate, setAgentBirthdate] = useState('');
     const [agentEmail, setAgentEmail] = useState('');
     const [agentPhone, setAgentPhone] = useState('');
-
     const [contractType, setContractType] = useState<"CDI" | "CDD" | "Stage/Alternance">('CDI');
     const [jobStartDate, setJobStartDate] = useState('');
     const [jobEndDate, setJobEndDate] = useState('');
     const [agentExperience, setAgentExperience] = useState('');
-
     const [jobs, setJobs] = useState([]);
     const [jobId, setJobId] = useState('');
 
@@ -33,7 +31,7 @@ function AgentsCreate() {
     const handleSubmit = async () => {
         const age = new Date().getFullYear() - new Date(agentBirthdate).getFullYear();
         const agentExperienceYear = new Date().getFullYear() - parseInt(agentExperience);
-        
+
         await axios.post('http://localhost:3011/agents', {
             "firstName": agentName,
             "lastName": agentLastName,
@@ -45,7 +43,7 @@ function AgentsCreate() {
         }).then((res) => {
             console.log(res);
         });
-        
+
     }
 
     return (
@@ -109,8 +107,9 @@ function AgentsCreate() {
                     </div>
 
                     <div className='flex justify-end'>
-                        <button className='bg-secondary hover:bg-secondary-light active:bg-secondary text-white px-4 py-2 rounded-md' onClick={handleSubmit}>Créer</button>
+                        <FormButton onClick={handleSubmit}>Créer</FormButton>
                     </div>
+
                 </div>
             </CardApp>
         </div>

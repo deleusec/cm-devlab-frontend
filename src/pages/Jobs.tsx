@@ -4,9 +4,9 @@ import CardApp from '@/components/app/CardApp';
 import { BriefcaseIcon, ChartBarIcon, AdjustmentsVerticalIcon, ArrowsUpDownIcon, BookmarkIcon, ListBulletIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
-
 function Jobs() {
     const [content, setContent] = useState<'list' | 'stats' | 'bookmarks'>('list');
+
     return (
         <>
             <div className='flex flex-col gap-3 p-[50px]'>
@@ -44,6 +44,15 @@ function Jobs() {
                             </ButtonApp>
                         </Link>
                     </div>
+                    {content === 'list' && <div className="pt-[50px] h-[425px]">
+                        Liste des métiers
+                    </div>}
+                    {content === 'stats' && <div className="pt-[50px] h-[425px]">
+                        Stats des agents
+                    </div>}
+                    {content === 'bookmarks' && <div className="pt-[50px] h-[425px]">
+                        Agents archivés
+                    </div>}
                 </CardApp>
             </div>
         </>

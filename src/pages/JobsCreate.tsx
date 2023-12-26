@@ -7,6 +7,7 @@ import FormLabel from "@/components/form/FormLabel";
 import FormTextArea from "@/components/form/FormTextArea";
 import FormCheckbox from '@/components/form/FormCheckbox';
 import BackLinkApp from '@/components/app/BackLinkApp';
+import FormButton from '@/components/form/FormButton';
 
 function JobsCreate() {
     const [jobName, setJobName] = useState('');
@@ -59,7 +60,7 @@ function JobsCreate() {
                     </div>
 
                     <div className='flex justify-end'>
-                        <button className='bg-secondary hover:bg-secondary-light active:bg-secondary text-white px-4 py-2 rounded-md' onClick={handleSubmit}>Créer</button>
+                        <FormButton onClick={handleSubmit}>Créer</FormButton>
                     </div>
                 </div>
             </CardApp>
