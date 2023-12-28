@@ -40,7 +40,7 @@ function SearchBar() {
     const research = async (search: string) => {
         const agents = await axios.get(`http://localhost:3011/agents`).then(res => res.data).catch(err => console.log(err));
         const filteredAgents = agents.filter((agent: Agent) => {
-            const fullName = `${agent.firstName} ${agent.lastName}`;
+            const fullName = `${agent.firstname} ${agent.lastname}`;
             return fullName.toLowerCase().includes(search.toLowerCase());
         });
         setAgents(filteredAgents);
@@ -67,7 +67,7 @@ function SearchBar() {
                     {agents.map((agent: Agent) => (
                         <li key={agent.id} className="flex items-center p-4 border-b border-gray-200 hover:bg-gray-100 cursor-pointer" onClick={()=>redirect(agent.id)}>
                             <div className="ml-4">
-                                <p>{agent.firstName} {agent.lastName}</p>
+                                <p>{agent.firstname} {agent.lastname}</p>
                             </div>
                         </li>
                     ))}

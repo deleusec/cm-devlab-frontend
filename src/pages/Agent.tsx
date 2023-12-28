@@ -22,11 +22,11 @@ function Agent() {
                     <CardApp >
                         <div className="space-y-2">
                             <h3>Agent</h3>
-                            <p>{agent.firstName} {agent.lastName}</p>
+                            <p>{agent.firstname} {agent.lastname}</p>
                             <p>{agent.email}</p>
                             <p>{agent.phone}</p>
                             <p>{agent.age}</p>
-                            <p>{agent.birthday}</p>
+                            <p>{agent.birthdate}</p>
                         </div>
                     </CardApp>
                     <CardApp >
@@ -48,7 +48,7 @@ function Agent() {
                         <div className="space-y-2">
                             <h3>Score</h3>
                             <p>{agent.agent_score}</p>
-                            <p>{agent.weakening_score}</p>
+                            <p>{agent.wear_score}</p>
                         </div>
                     </CardApp>
                 </div>
