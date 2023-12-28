@@ -7,6 +7,7 @@ import FormLabel from '@/components/form/FormLabel';
 import FormSelect from '@/components/form/FormSelect';
 import BackLinkApp from '@/components/app/BackLinkApp';
 import FormButton from '@/components/form/FormButton';
+import { useNavigate } from 'react-router-dom';
 
 function AgentsCreate() {
     const [agentName, setAgentName] = useState('');
@@ -20,6 +21,7 @@ function AgentsCreate() {
     const [agentExperience, setAgentExperience] = useState('');
     const [jobs, setJobs] = useState([]);
     const [jobId, setJobId] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:3011/jobs').then((res) => {
@@ -29,19 +31,21 @@ function AgentsCreate() {
 
 
     const handleSubmit = async () => {
-        const age = new Date().getFullYear() - new Date(agentBirthdate).getFullYear();
-        const agentExperienceYear = new Date().getFullYear() - parseInt(agentExperience);
 
         await axios.post('http://localhost:3011/agents', {
-            "firstName": agentName,
-            "lastName": agentLastName,
-            "age": age,
+            "firstname": agentName,
+            "lastname": agentLastName,
+            "birthdate": agentBirthdate,
             "email": agentEmail,
-            "job_seniority": agentExperienceYear + "-01-01",
-            "post_seniority": jobStartDate,
+            "phone": agentPhone,
+            "contract_type": contractType,
+            "contract_start": jobStartDate,
+            "contract_end": jobEndDate ? jobEndDate : null,
+            "job_seniority": agentExperience,
             "JobId": parseInt(jobId)
         }).then((res) => {
             console.log(res);
+            navigate('/agents');
         });
 
     }
