@@ -25,10 +25,9 @@ function SearchBar() {
         }
     }, [search]);
 
-    // on click outside of the search bar => close the dropdown
     useEffect(() => {
-        const handleClickOutside = (event: any) => {
-            if (event.target.id !== 'search') {
+        const handleClickOutside = (event: MouseEvent ) => {
+            if ((event.target as HTMLInputElement)?.id !== 'searchbar') {
                 setIsDropdownOpen(false);
             }
         }
@@ -54,7 +53,7 @@ function SearchBar() {
     return (
         <div className="relative w-full max-w-[600px]">
             <div className={`flex h-10 rounded-full bg-light-gray w-full ${isFocused && 'outline outline-2 outline-secondary'}`}>
-                <input autoComplete="off" id="search" type="search" placeholder="Recherche"
+                <input id="searchbar" type="search" placeholder="Recherche"
                     className="bg-transparent border-0 focus-visible:outline-0 flex h-full w-full px-6"
                     onFocus={handleFocus} onBlur={handleFocus} onChange={(e) => setSearch(e.target.value)} value={search}
                      />
