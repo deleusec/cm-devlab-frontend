@@ -15,17 +15,30 @@ function JobsCreate() {
     const navigate = useNavigate();
 
     const [jobFactors, setJobFactors] = useState({
-        physical: false,
+        manual_handling: false,
+        awkward_postures: false,
+        hazardous_chemicals: false,
+        hyperbaric_environment: false,
+        extreme_temperatures: false,
+        noise: false,
         night_shift: false,
+        alternating_shifts: false,
+        repetitive_work: false,
     });
 
     const handleSubmit = async () => {
         await axios.post('http://localhost:3011/jobs', {
             "name": jobName,
             "description": jobDescription,
-            "job_field": null,
-            "physical": jobFactors.physical,
-            "night_shift": jobFactors.night_shift
+            "manual_handling": jobFactors.manual_handling,
+            "awkward_postures": jobFactors.awkward_postures,
+            "hazardous_chemicals": jobFactors.hazardous_chemicals,
+            "hyperbaric_environment": jobFactors.hyperbaric_environment,
+            "extreme_temperatures": jobFactors.extreme_temperatures,
+            "noise": jobFactors.noise,
+            "night_shift": jobFactors.night_shift,
+            "alternating_shifts": jobFactors.alternating_shifts,
+            "repetitive_work": jobFactors.repetitive_work,
         }).then((res) => {
             console.log(res);
         });
@@ -48,15 +61,43 @@ function JobsCreate() {
                         <FormTextArea rows={6} name="jobDescription" id="jobDescription" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
                     </FormLabel>
                     <div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, manual_handling: !jobFactors.manual_handling })}>
+                            <FormCheckbox name="manualHandling" id="manualHandling" checked={jobFactors.manual_handling} />
+                            <span className="mr-2">Manutention manuelle</span>
+                        </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, awkward_postures: !jobFactors.awkward_postures })}>
+                            <FormCheckbox name="awkwardPostures" id="awkwardPostures" checked={jobFactors.awkward_postures} />
+                            <span className="mr-2">Postures pénibles</span>
+                        </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, hazardous_chemicals: !jobFactors.hazardous_chemicals })}>
+                            <FormCheckbox name="hazardousChemicals" id="hazardousChemicals" checked={jobFactors.hazardous_chemicals} />
+                            <span className="mr-2">Produits chimiques dangereux</span>
+                        </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, hyperbaric_environment: !jobFactors.hyperbaric_environment })}>
+                            <FormCheckbox name="hyperbaricEnvironment" id="hyperbaricEnvironment" checked={jobFactors.hyperbaric_environment} />
+                            <span className="mr-2">Environnement hyperbare</span>
+                        </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, extreme_temperatures: !jobFactors.extreme_temperatures })}>
+                            <FormCheckbox name="extremeTemperatures" id="extremeTemperatures" checked={jobFactors.extreme_temperatures} />
+                            <span className="mr-2">Températures extrêmes</span>
+                        </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, noise: !jobFactors.noise })}>
+                            <FormCheckbox name="noise" id="noise" checked={jobFactors.noise} />
+                            <span className="mr-2">Bruit</span>
+                        </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, night_shift: !jobFactors.night_shift })}>
                             <FormCheckbox name="nightShift" id="nightShift" checked={jobFactors.night_shift} />
                             <span className="mr-2">Travail de nuit</span>
                         </div>
-
-                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, physical: !jobFactors.physical })}>
-                            <FormCheckbox name="physicalFactor" id="physicalFactor" checked={jobFactors.physical} />
-                            <span className="mr-2">Travail physique</span>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, alternating_shifts: !jobFactors.alternating_shifts })}>
+                            <FormCheckbox name="alternatingShifts" id="alternatingShifts" checked={jobFactors.alternating_shifts} />
+                            <span className="mr-2">Travail en équipe</span>
                         </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, repetitive_work: !jobFactors.repetitive_work })}>
+                            <FormCheckbox name="repetitiveWork" id="repetitiveWork" checked={jobFactors.repetitive_work} />
+                            <span className="mr-2">Travail répétitif</span>
+                        </div>
+
                     </div>
 
                     <div className='flex justify-end'>
