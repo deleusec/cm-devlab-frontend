@@ -2,9 +2,9 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 
-function DataTable({ rows, columns }: { rows: object[], columns: GridColDef[] }) {
+function DataTable({ rows, columns, hideFooter, height }: { rows: object[], columns: GridColDef[], hideFooter?: boolean, height?: string }) {
     return (
-        <Box sx={{ width: '100%', height: '500px' }}>
+        <Box sx={{ width: '100%', height: height ? height : '500px' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -18,6 +18,7 @@ function DataTable({ rows, columns }: { rows: object[], columns: GridColDef[] })
                 pageSizeOptions={[50]}
                 disableRowSelectionOnClick
                 disableColumnMenu
+                hideFooter={hideFooter}
             />
         </Box>
     );
