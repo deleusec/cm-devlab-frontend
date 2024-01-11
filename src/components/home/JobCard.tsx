@@ -42,7 +42,7 @@ const JobScoreStats = (jobs: Job[]): JobStats => {
     })
     const min: string = Math.min.apply(null, jobScores).toFixed(2)
     const max: string = Math.max.apply(null, jobScores).toFixed(2)
-    const sum: number = jobScores.reduce((total, value) => (total + value))
+    const sum: number = jobScores.reduce((total, value) => (total + value), 0)
     const avg: string = (sum / jobScores.length).toFixed(2)
 
     return { min, max, avg }

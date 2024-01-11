@@ -42,7 +42,7 @@ const AgentScoreStats = (agents: Agent[]): AgentStats => {
     })
     const min: string = Math.min.apply(null, wearScores).toFixed(2)
     const max: string = Math.max.apply(null, wearScores).toFixed(2)
-    const sum: number = wearScores.reduce((total, value) => (total + value))
+    const sum: number = wearScores.reduce((total, value) => (total + value), 0)
     const avg: string = (sum / wearScores.length).toFixed(2)
 
     return { min, max, avg }
