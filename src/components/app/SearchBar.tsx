@@ -57,7 +57,7 @@ function SearchBar() {
                     className="bg-transparent border-0 focus-visible:outline-0 flex h-full w-full px-6"
                     onFocus={handleFocus} onBlur={handleFocus} onChange={(e) => setSearch(e.target.value)} value={search}
                      />
-                <label htmlFor="search" className="flex items-center h-full pr-4 cursor-pointer text-secondary">
+                <label htmlFor="searchbar" className="flex items-center h-full pr-4 cursor-pointer text-secondary">
                     <MagnifyingGlassIcon className="w-5 stroke-2" />
                 </label>
             </div>

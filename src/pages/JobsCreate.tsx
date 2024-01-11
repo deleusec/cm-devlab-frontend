@@ -63,7 +63,7 @@ function JobsCreate() {
                     <div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, manual_handling: !jobFactors.manual_handling })}>
                             <FormCheckbox name="manualHandling" id="manualHandling" checked={jobFactors.manual_handling} />
-                            <span className="mr-2">Manutention manuelle</span>
+                            <span className="mr-2">Port de charges lourdes</span>
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, awkward_postures: !jobFactors.awkward_postures })}>
                             <FormCheckbox name="awkwardPostures" id="awkwardPostures" checked={jobFactors.awkward_postures} />
@@ -71,11 +71,11 @@ function JobsCreate() {
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, hazardous_chemicals: !jobFactors.hazardous_chemicals })}>
                             <FormCheckbox name="hazardousChemicals" id="hazardousChemicals" checked={jobFactors.hazardous_chemicals} />
-                            <span className="mr-2">Produits chimiques dangereux</span>
+                            <span className="mr-2">Agents chimiques dangereux</span>
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, hyperbaric_environment: !jobFactors.hyperbaric_environment })}>
                             <FormCheckbox name="hyperbaricEnvironment" id="hyperbaricEnvironment" checked={jobFactors.hyperbaric_environment} />
-                            <span className="mr-2">Environnement hyperbare</span>
+                            <span className="mr-2">Travail en milieu hyperbare</span>
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, extreme_temperatures: !jobFactors.extreme_temperatures })}>
                             <FormCheckbox name="extremeTemperatures" id="extremeTemperatures" checked={jobFactors.extreme_temperatures} />
@@ -91,7 +91,7 @@ function JobsCreate() {
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, alternating_shifts: !jobFactors.alternating_shifts })}>
                             <FormCheckbox name="alternatingShifts" id="alternatingShifts" checked={jobFactors.alternating_shifts} />
-                            <span className="mr-2">Travail en équipe</span>
+                            <span className="mr-2">Travail en équipes successives alternantes</span>
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, repetitive_work: !jobFactors.repetitive_work })}>
                             <FormCheckbox name="repetitiveWork" id="repetitiveWork" checked={jobFactors.repetitive_work} />

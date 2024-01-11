@@ -1,12 +1,72 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ButtonApp from '@/components/app/ButtonApp';
 import CardApp from '@/components/app/CardApp';
-import { ArrowsUpDownIcon, ListBulletIcon, BookmarkIcon, ChartBarIcon, AdjustmentsVerticalIcon, PlusIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { ListBulletIcon, BookmarkIcon, ChartBarIcon, PlusIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
-
+import SearchInputApp from '@/components/app/SearchInputApp';
+import DataTable from '@/components/app/DataTable';
+import axios from 'axios';
+import { GridColDef } from '@mui/x-data-grid';
+import { Agent } from '@/types/Agent';
+import formatDate from '@/utils/formatDate';
 
 function Agents() {
     const [content, setContent] = useState<'list' | 'stats' | 'bookmarks'>('list');
+    const [searchAgent, setSearchAgent] = useState('');
+    const [agents, setAgents] = useState([]);
+
+    const handleSearch = async (value: string) => {
+        setSearchAgent(value);
+        await axios.get(`http://localhost:3011/agents`).then(res => res.data).then((res) => {
+            const filteredAgents = res.filter((agent: Agent) => {
+                // filter by name and lastname and email and phone  and birthdate
+                const birthdate = new Date(agent.birthdate);
+                const contract_start = new Date(agent.contract_start);
+                const contract_end = new Date(agent.contract_end);
+                const age = new Date().getFullYear() - birthdate.getFullYear();
+                agent.age = age;
+                agent.birthdate = formatDate(birthdate);
+                agent.contract_start = formatDate(contract_start);
+                if (agent.contract_end) {
+                    agent.contract_end = formatDate(contract_end);
+                }
+                const fullName = `${agent.firstname} ${agent.lastname}`;
+                return fullName.toLowerCase().includes(value.toLowerCase()) || agent.email?.toLowerCase().includes(value.toLowerCase()) || agent.phone?.toLowerCase().includes(value.toLowerCase()) || agent.birthdate.toLowerCase().includes(value.toLowerCase());
+            });
+            setAgents(filteredAgents);
+        });
+    }
+
+    useEffect(() => {
+        axios.get('http://localhost:3011/agents').then((res) => {
+            res.data.forEach((agent: Agent) => {
+                // calculate age, and format birthdate and contract dates with dd/mm/yyyy and 00/00/0000
+                const birthdate = new Date(agent.birthdate);
+                const contract_start = new Date(agent.contract_start);
+                const contract_end = new Date(agent.contract_end);
+                const age = new Date().getFullYear() - birthdate.getFullYear();
+                agent.age = age;
+                agent.birthdate = formatDate(birthdate);
+                agent.contract_start = formatDate(contract_start);
+                if (agent.contract_end) {
+                    agent.contract_end = formatDate(contract_end);
+                }
+                               
+            }
+            );
+            setAgents(res.data);
+        });
+    }, []);
+
+    const columns: GridColDef[] = [
+        { field: 'firstname', headerName: 'Prénom', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'lastname', headerName: 'Nom', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'birthdate', headerName: 'Date de naissance', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white', valueGetter: (params) => params.row.birthdate + ' (' + params.row.age + 'ans)' },
+        { field: 'email', headerName: 'Email', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'phone', headerName: 'Téléphone', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'agent_score', headerName: 'Score agent', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white', valueFormatter: (params) => params.value.toFixed(2) },
+        { field: 'wear_score', headerName: 'Score usure', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white', valueFormatter: (params) => params.value.toFixed(2) },
+    ];
     return (
         <>
             <div className='flex flex-col gap-3 p-[50px]'>
@@ -17,42 +77,38 @@ function Agents() {
             </div>
             <div className='min-h-full pb-[50px]'>
                 <div className='flex gap-4 px-[50px] pb-[50px]'>
-                    <ButtonApp theme={'light'} active={content === 'list' && true} text={"Liste"} onClick={()=>setContent('list')}>
-                        <ListBulletIcon className='w-4 stroke-2'/>
+                    <ButtonApp theme={'light'} active={content === 'list' && true} text={"Liste"} onClick={() => setContent('list')}>
+                        <ListBulletIcon className='w-4 stroke-2' />
                     </ButtonApp>
-                    <ButtonApp theme={'light'} active={content === 'stats' && true} text="Stats" onClick={()=>setContent('stats')}>
+                    <ButtonApp theme={'light'} active={content === 'stats' && true} text="Stats" onClick={() => setContent('stats')}>
                         <ChartBarIcon className='w-4 stroke-[1.5]' />
                     </ButtonApp>
-                    <ButtonApp theme={'light'} active={content === 'bookmarks' && true} text="Archivés" onClick={()=>setContent('bookmarks')}>
+                    <ButtonApp theme={'light'} active={content === 'bookmarks' && true} text="Archivés" onClick={() => setContent('bookmarks')}>
                         <BookmarkIcon className='w-4 stroke-2' />
                     </ButtonApp>
                 </div>
+                {content === 'list' && <div className="min-h-[425px]">
+                    <CardApp title='Liste des agents'>
+                        <div className='flex gap-4 pb-[50px]'>
+                            <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchAgent} />
+                            <div className='flex-1'></div>
+                            <Link to={'/agents/create'}>
+                                <ButtonApp theme="light" text="Ajouter un agent">
+                                    <PlusIcon className='w-4 stroke-2' />
+                                </ButtonApp>
+                            </Link>
+                        </div>
 
-                <CardApp title="Liste des agents">
-                    <div className='flex gap-4' id="sort">
-                        <ButtonApp theme={"dark"} text="Filtres">
-                            <AdjustmentsVerticalIcon className='w-4 stroke-2' />
-                        </ButtonApp>
-                        <ButtonApp theme="light" text="Trier par">
-                            <ArrowsUpDownIcon className='w-4 stroke-2' />
-                        </ButtonApp>
-                        <div className='flex-1'></div>
-                        <Link to={'/agents/create'}>
-                            <ButtonApp theme="light" text="Ajouter un agent">
-                                <PlusIcon className='w-4 stroke-2' />
-                            </ButtonApp>
-                        </Link>
-                    </div>
-                    {content === 'list' && <div className="pt-[50px] h-[425px]">
-                        Tableau des agents
-                    </div>}
-                    {content === 'stats' && <div className="pt-[50px] h-[425px]">
-                        Stats des agents
-                    </div>}
-                    {content === 'bookmarks' && <div className="pt-[50px] h-[425px]">
-                        Agents archivés
-                    </div>}
-                </CardApp>
+                        <DataTable rows={agents} columns={columns} />
+                    </CardApp>
+                </div>}
+                {content === 'stats' && <div className="h-[425px]">
+                    Stats des agents
+                </div>}
+                {content === 'bookmarks' && <div className="h-[425px]">
+                    Agents archivés
+                </div>}
+
             </div>
         </>
     );
