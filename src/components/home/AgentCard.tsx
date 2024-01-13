@@ -1,5 +1,4 @@
 import { Agent } from "@/types/Agent";
-import { useEffect, useState } from "react";
 
 interface AgentStats {
     min: string,
@@ -8,12 +7,8 @@ interface AgentStats {
 }
 
 export default function AgentCard({ agents }: { agents: Agent[] }) {
-    const [stats, setStats] = useState<AgentStats>()
 
-    useEffect(() => {
-        const stats = AgentScoreStats(agents)
-        setStats(stats)
-    }, [agents])
+    const stats: AgentStats = AgentScoreStats(agents)
 
     return stats && (
         <div className="bg-white p-6 rounded-xl w-1/2 space-y-6">
@@ -36,14 +31,17 @@ export default function AgentCard({ agents }: { agents: Agent[] }) {
     )
 }
 
-const AgentScoreStats = (agents: Agent[]): AgentStats => {
-    const wearScores: number[] = agents.map((agent: Agent) => {
-        return agent.wear_score
-    })
-    const min: string = Math.min.apply(null, wearScores).toFixed(2)
-    const max: string = Math.max.apply(null, wearScores).toFixed(2)
-    const sum: number = wearScores.reduce((total, value) => (total + value), 0)
-    const avg: string = (sum / wearScores.length).toFixed(2)
+const AgentScoreStats = (agents: Agent[]): AgentStats => {    
+    const wearScores: number[] = agents.map(agent => agent.wear_score);
+    
+    if (wearScores.length === 0) {
+        return { min: "0", max: "0", avg: "0" };
+    }
 
-    return { min, max, avg }
+    const min: string = Math.min(...wearScores).toFixed(2);
+    const max: string = Math.max(...wearScores).toFixed(2);
+    const sum: number = wearScores.reduce((total, value) => total + value, 0);
+    const avg: string = (sum / wearScores.length).toFixed(2);
+
+    return { min, max, avg };
 }

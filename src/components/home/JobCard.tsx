@@ -1,5 +1,4 @@
 import Job from "@/types/Job";
-import { useEffect, useState } from "react";
 
 interface JobStats {
     min: string,
@@ -8,12 +7,8 @@ interface JobStats {
 }
 
 export default function JobCard({ jobs }: { jobs: Job[] }) {
-    const [stats, setStats] = useState<JobStats>()
 
-    useEffect(() => {
-        const stats = JobScoreStats(jobs)
-        setStats(stats)
-    }, [jobs])
+    const stats: JobStats = JobScoreStats(jobs)
 
     return stats && (
         <div className="bg-white p-6 rounded-xl w-1/2 space-y-6">
@@ -25,7 +20,7 @@ export default function JobCard({ jobs }: { jobs: Job[] }) {
             <div className="flex">
                 <div className="w-full">
                     <h4 className="mb-4">Score métier min :</h4>
-                    <span className="font-semibold text-4xl">{stats.min}</span>
+                    <span className="font-semibold text-4xl">{stats.min ? stats.min : ""}</span>
                 </div>
                 <div className="w-full">
                     <h4 className="mb-4">Score métier max :</h4>
@@ -36,14 +31,18 @@ export default function JobCard({ jobs }: { jobs: Job[] }) {
     )
 }
 
-const JobScoreStats = (jobs: Job[]): JobStats => {
-    const jobScores: number[] = jobs.map((job: Job) => {
-        return job.job_score
-    })
-    const min: string = Math.min.apply(null, jobScores).toFixed(2)
-    const max: string = Math.max.apply(null, jobScores).toFixed(2)
-    const sum: number = jobScores.reduce((total, value) => (total + value), 0)
-    const avg: string = (sum / jobScores.length).toFixed(2)
+const JobScoreStats = (jobs: Job[]): JobStats => {    
+    const jobScores: number[] = jobs.map(job => job.job_score);
+
+    if (jobScores.length === 0) {
+        return { min: "0", max: "0", avg: "0" };
+    }
+
+    const min: string = Math.min(...jobScores).toFixed(2);
+    const max: string = Math.max(...jobScores).toFixed(2);
+    const sum: number = jobScores.reduce((total, value) => total + value, 0);
+    const avg: string = (sum / jobScores.length).toFixed(2);
+
 
     return { min, max, avg }
 }
