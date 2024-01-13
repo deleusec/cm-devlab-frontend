@@ -13,7 +13,7 @@ export interface Agent {
     contract_start: string;
     contract_end: string;
     job_seniority: number;
-    Job: Job; // Dans le back le modèle est "Job" et nom "job" alors obligé de le mettre en maj
+    Job: Job; 
     jobname?: string;
     agent_score: number;
     wear_score: number;
