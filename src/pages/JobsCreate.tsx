@@ -17,6 +17,7 @@ function JobsCreate() {
     const [jobFactors, setJobFactors] = useState({
         manual_handling: false,
         awkward_postures: false,
+        mechanical_vibrations: false,
         hazardous_chemicals: false,
         hyperbaric_environment: false,
         extreme_temperatures: false,
@@ -32,6 +33,7 @@ function JobsCreate() {
             "description": jobDescription,
             "manual_handling": jobFactors.manual_handling,
             "awkward_postures": jobFactors.awkward_postures,
+            "mechanical_vibrations": jobFactors.mechanical_vibrations,
             "hazardous_chemicals": jobFactors.hazardous_chemicals,
             "hyperbaric_environment": jobFactors.hyperbaric_environment,
             "extreme_temperatures": jobFactors.extreme_temperatures,
@@ -68,6 +70,10 @@ function JobsCreate() {
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, awkward_postures: !jobFactors.awkward_postures })}>
                             <FormCheckbox name="awkwardPostures" id="awkwardPostures" checked={jobFactors.awkward_postures} />
                             <span className="mr-2">Postures pénibles</span>
+                        </div>
+                        <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, mechanical_vibrations: !jobFactors.mechanical_vibrations })}>
+                            <FormCheckbox name="mechanicalVibrations" id="mechanicalVibrations" checked={jobFactors.mechanical_vibrations} />
+                            <span className="mr-2">Vibrations mécaniques</span>
                         </div>
                         <div className="flex items-center mb-2 cursor-pointer w-fit" onClick={() => setJobFactors({ ...jobFactors, hazardous_chemicals: !jobFactors.hazardous_chemicals })}>
                             <FormCheckbox name="hazardousChemicals" id="hazardousChemicals" checked={jobFactors.hazardous_chemicals} />

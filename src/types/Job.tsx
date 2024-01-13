@@ -4,6 +4,7 @@ export default interface Job {
     description: string;
     manual_handling: boolean;
     awkward_postures: boolean;
+    mechanical_vibrations: boolean;
     hazardous_chemicals: boolean;
     hyperbaric_environment: boolean;
     extreme_temperatures: boolean;
