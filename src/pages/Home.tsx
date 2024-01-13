@@ -3,40 +3,37 @@ import AgentTable from "@/components/home/AgentTable";
 import JobCard from "@/components/home/JobCard";
 import JobTable from "@/components/home/JobTable";
 import { Agent } from "@/types/Agent";
-import Job from "@/types/Job";
 import formatDate from "@/utils/formatDate";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Home() {
-    const [agents, setAgents] = useState<Agent[]>([]);
-    const [jobs, setJobs] = useState<Job[]>([]);
+    const [agents, setAgents] = useState([]);
+    const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
-        const fetchAgent = async () => {
-            await axios.get(`http://localhost:3011/agents`).then(res => res.data).then((res) => {
-                const allAgents: Agent[] = res.map(responseTraitement)
-                setAgents(allAgents);
-            });
-        }
-        fetchAgent()
+        axios.get('http://localhost:3011/agents').then((res) => {
+            const agents = res.data.map((agent: Agent) => {
+                return responseTraitement(agent);
+            })
+            setAgents(agents);
+            return agents;
+        });
     }, []);
 
     useEffect(() => {
-        const fetchjob = async () => {
-            await axios.get(`http://localhost:3011/jobs`).then(res => res.data).then((res) => {
-                setJobs(res);
-            });
-        }
-        fetchjob()
-    })
+        axios.get('http://localhost:3011/jobs').then((res) => {
+            setJobs(res.data);
+            return res.data;
+        });
+    }, [])
 
     return (
         <div className="p-12 space-y-9 text-secondary">
             <h1>Bienvenue sur <span className=" font-bold">Bridge</span></h1>
             <div className="flex h-2/6 space-x-6">
-                <AgentCard agents={agents} />
-                <JobCard jobs={jobs} />
+                <AgentCard agents={agents}/>
+                <JobCard jobs={jobs}/>
                 <div className="bg-white p-6 rounded-xl w-2/6 space-y-6">
                     <div>
                         <h4 className="mb-6">Agent ajoutés :</h4>
