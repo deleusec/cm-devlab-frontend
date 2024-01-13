@@ -7,10 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#BAFF29",
-        "secondary": "#1A1B41",
-        "secondary-light": "#2D2E5D",
-        "light-gray": "#F4F4F4",
+        "primary": {
+          "DEFAULT" : "#BAFF29",
+        },
+        "secondary": {
+          "DEFAULT": "#1A1B41",
+          "light": "#2A2B5F",
+        },
+        "gray": {
+          "DEFAULT": "#6b7280",
+          "light": "#f3f4f6",
+          "dark": "#4b5563",
+        },
       },
       textColor: {
         "gray": "#4F4F4F",

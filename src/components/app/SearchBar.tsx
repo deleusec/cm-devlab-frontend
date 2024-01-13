@@ -52,7 +52,7 @@ function SearchBar() {
     }
     return (
         <div className="relative w-full max-w-[600px]">
-            <div className={`flex h-10 rounded-full bg-light-gray w-full ${isFocused && 'outline outline-2 outline-secondary'}`}>
+            <div className={`flex h-10 rounded-full bg-gray-light w-full ${isFocused && 'outline outline-2 outline-secondary'}`}>
                 <input id="searchbar" type="search" placeholder="Recherche"
                     className="bg-transparent border-0 focus-visible:outline-0 flex h-full w-full px-6"
                     onFocus={handleFocus} onBlur={handleFocus} onChange={(e) => setSearch(e.target.value)} value={search}

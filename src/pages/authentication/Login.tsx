@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Login() {
     return (
-        <div className="w-full h-[100vh] bg-light-gray flex flex-col justify-center items-center gap-10">
+        <div className="w-full h-[100vh] bg-gray-light flex flex-col justify-center items-center gap-10">
             <div className="font-bold text-secondary text-6xl">Bridge</div>
             <div className="flex flex-col gap-8 w-full max-w-[400px]">
                 <h1>Se connecter</h1>
