@@ -31,7 +31,9 @@ export default function AgentTable({ agents }: { agents: Agent[] }) {
         <>
             <div className="flex justify-between mb-6">
                 <h3>Liste des agents</h3>
-                <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchAgent} />
+                <div>
+                    <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchAgent} />
+                </div>
             </div>
             <DataTable rows={filteredAgents} columns={columns} hideFooter height="70%" />
         </>

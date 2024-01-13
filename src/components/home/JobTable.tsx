@@ -30,7 +30,9 @@ export default function JobTable({ jobs }: { jobs: Job[] }) {
         <>
             <div className="flex justify-between mb-6">
                 <h3>Liste des métiers</h3>
-                <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchValue} />
+                <div>
+                    <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchValue} />
+                </div>
             </div>
             <DataTable rows={filteredJobs} columns={columns} hideFooter height="70%" />
         </>
