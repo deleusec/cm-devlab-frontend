@@ -47,7 +47,16 @@ function AgentsCreate() {
             console.log(res);
             navigate('/agents');
         });
+    }
+    const formatPhone = (phone: string) => {
+        // Remplacer +33 par 0
+        let formatted = phone.replace(/^\+33/, '0');
 
+        // Supprimer tous les caractères non numériques
+        formatted = formatted.replace(/\D/g, '');
+
+        // Appliquer le formatage
+        return formatted.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5').trim();
     }
 
     return (
@@ -75,7 +84,7 @@ function AgentsCreate() {
                     </FormLabel>
 
                     <FormLabel title='Téléphone' for="agentPhone">
-                        <FormInput type="tel" name="agentPhone" id="agentPhone" value={agentPhone} onChange={(e) => setAgentPhone(e.target.value)} />
+                        <FormInput type="tel" name="agentPhone" id="agentPhone" value={agentPhone} onChange={(e) => setAgentPhone(e.target.value)} onBlur={(e) => setAgentPhone(formatPhone(e.target.value))} />
                     </FormLabel>
                 </div>
                 <div className='space-y-6 lg:w-1/2 min-w-[300px]'>
