@@ -7,7 +7,7 @@ import SearchInputApp from '@/components/app/SearchInputApp';
 import DataTable from '@/components/app/DataTable';
 import axios from 'axios';
 import { GridColDef } from '@mui/x-data-grid';
-import { Agent } from '@/types/Agent';
+import Agent from '@/types/Agent';
 import formatDate from '@/utils/formatDate';
 
 function Agents() {
@@ -87,7 +87,7 @@ function Agents() {
                         <BookmarkIcon className='w-4 stroke-2' />
                     </ButtonApp>
                 </div>
-                {content === 'list' && <div className="min-h-[425px]">
+                {content === 'list' && <div className="min-h-[425px] px-[50px]">
                     <CardApp title='Liste des agents'>
                         <div className='flex gap-4 pb-[50px]'>
                             <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchAgent} />

@@ -1,6 +1,6 @@
 import Job from "./Job";
 
-export interface Agent {
+export default interface Agent {
     id: number;
     fullname?: string;
     firstname: string;

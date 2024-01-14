@@ -6,7 +6,7 @@ interface CardAppProps {
 
 function CardApp(props: CardAppProps) {
     return (
-        <div className='px-[50px] w-full'>
+        <div className='w-full'>
             <div className='flex flex-col w-full px-[50px] py-[45px] bg-white rounded-xl'>
                 {props.title && <h3 className="mb-16">{props.title}</h3>}
                 {props.children}

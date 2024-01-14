@@ -11,6 +11,7 @@ import AgentsCreate from './pages/AgentsCreate'
 import Agent from './pages/Agent'
 import Jobs from './pages/Jobs'
 import JobsCreate from './pages/JobsCreate'
+import Job from './pages/Job'
 import Admins from './pages/Admins'
 import Login from './pages/authentication/Login'
 import ForgotPassword from './pages/authentication/ForgotPassword'
@@ -29,6 +30,7 @@ function App() {
           <Route path="/agents/:id" element={<Agent />} />
           <Route path="/metiers" element={<Jobs />} />
           <Route path="/metiers/create" element={<JobsCreate />} />
+          <Route path="/metiers/:id" element={<Job />} />
           <Route path="/admins" element={<Admins />} />
         </Route>
         <Route path="/login" element={<Login />} />

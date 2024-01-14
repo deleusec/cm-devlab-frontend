@@ -2,7 +2,7 @@ import AgentCard from "@/components/home/AgentCard";
 import AgentTable from "@/components/home/AgentTable";
 import JobCard from "@/components/home/JobCard";
 import JobTable from "@/components/home/JobTable";
-import { Agent } from "@/types/Agent";
+import Agent from "@/types/Agent";
 import formatDate from "@/utils/formatDate";
 import axios from "axios";
 import { useEffect, useState } from "react";

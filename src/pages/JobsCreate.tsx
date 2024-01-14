@@ -50,8 +50,8 @@ function JobsCreate() {
     }
 
     return (
-        <div className="flex flex-col w-full bg-gray-light min-h-body justify-center py-[50px]">
-            <div className='mb-[20px] ml-[50px]'>
+        <div className="flex flex-col w-full bg-gray-light min-h-body justify-center p-[50px]">
+            <div className='mb-[20px]'>
                 <BackLinkApp />
             </div>
             <CardApp title="Nouveau Job">

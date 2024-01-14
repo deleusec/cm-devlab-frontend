@@ -60,8 +60,8 @@ function AgentsCreate() {
     }
 
     return (
-        <div className="bg-gray-light min-h-body flex flex-col w-full justify-center py-[50px]">
-            <div className='mb-[20px] ml-[50px]'>
+        <div className="bg-gray-light min-h-body flex flex-col w-full justify-center p-[50px]">
+            <div className='mb-[20px]'>
                 <BackLinkApp />
             </div>
             <CardApp title="Nouvel Agent">

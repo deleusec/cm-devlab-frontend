@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
-import { Agent } from "@/types/Agent";
+import Agent from "@/types/Agent";
 import { useNavigate } from "react-router-dom";
 function SearchBar() {
     const [isFocused, setIsFocused] = useState(false);

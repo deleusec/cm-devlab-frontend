@@ -47,7 +47,7 @@
 }
 
 .MuiDataGrid-row:hover {
-  @apply !bg-gray-light;
+  @apply !bg-gray-50 cursor-pointer;
 }
 
 .MuiDataGrid-cell:focus,

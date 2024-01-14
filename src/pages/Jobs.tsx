@@ -54,7 +54,7 @@ function Jobs() {
                     </ButtonApp>
                 </div>
 
-                {content === 'list' && <div className=" min-h-[425px]">
+                {content === 'list' && <div className=" min-h-[425px] px-[50px]">
                     <CardApp title="Liste des métiers">
                         <div className='flex gap-4 mb-[50px]'>
                             <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchJob} />
@@ -68,7 +68,7 @@ function Jobs() {
                         <DataTable rows={jobs} columns={columns} redirectPath="metiers" />
                     </CardApp>
                 </div>}
-                {content === 'stats' && <div className=" h-[425px]">
+                {content === 'stats' && <div className=" h-[425px] px-[50px]">
                     <CardApp title='Statistiques'>
                         Statistiques
                     </CardApp>

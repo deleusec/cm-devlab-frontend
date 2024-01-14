@@ -1,5 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid";
-import { Agent } from '@/types/Agent';
+import Agent from '@/types/Agent';
 import DataTable from "@/components/app/DataTable";
 import SearchInputApp from "@/components/app/SearchInputApp";
 import { useEffect, useState } from "react";
