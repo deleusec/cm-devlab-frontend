@@ -99,7 +99,7 @@ function Agents() {
                             </Link>
                         </div>
 
-                        <DataTable rows={agents} columns={columns} />
+                        <DataTable rows={agents} columns={columns} redirectPath='agents' />
                     </CardApp>
                 </div>}
                 {content === 'stats' && <div className="h-[425px]">

@@ -65,7 +65,7 @@ function Jobs() {
                                 </ButtonApp>
                             </Link>
                         </div>
-                        <DataTable rows={jobs} columns={columns} />
+                        <DataTable rows={jobs} columns={columns} redirectPath="jobs" />
                     </CardApp>
                 </div>}
                 {content === 'stats' && <div className=" h-[425px]">

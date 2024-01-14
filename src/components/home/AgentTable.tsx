@@ -35,7 +35,7 @@ export default function AgentTable({ agents }: { agents: Agent[] }) {
                     <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchAgent} />
                 </div>
             </div>
-            <DataTable rows={filteredAgents} columns={columns} hideFooter height="70%" />
+            <DataTable rows={filteredAgents} columns={columns} redirectPath="agents" hideFooter height="70%" />
         </>
     )
 }
