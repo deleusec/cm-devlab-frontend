@@ -34,7 +34,7 @@ export default function JobTable({ jobs }: { jobs: Job[] }) {
                     <SearchInputApp onChange={(e) => handleSearch(e.target.value)} value={searchValue} />
                 </div>
             </div>
-            <DataTable rows={filteredJobs} columns={columns} redirectPath="jobs" hideFooter height="70%" />
+            <DataTable rows={filteredJobs} columns={columns} redirectPath="metiers" hideFooter height="70%" />
         </>
     )
 }
