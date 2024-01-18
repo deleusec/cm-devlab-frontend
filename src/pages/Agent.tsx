@@ -104,7 +104,7 @@ function Agent() {
                     </div>
                     <div className="flex gap-3 relative">
                         <CardApp>
-                            <button className='absolute right-4 top-4 rounded-full p-2' onClick={() => setOverlay(true)}>
+                            <button className='absolute right-4 top-4 rounded-full p-2' onClick={() => setOverlay(true)} title="Modifier">
                                 <PencilSquareIcon className='h-6 w-6 text-secondary' />
                             </button>
                             <div className='flex flex-col gap-3'>
@@ -149,8 +149,8 @@ function Agent() {
                     </div>
                 </div>
             </div>
-            <OverlayApp show={overlay} setShow={setOverlay} >
-                <div className='space-y-6 min-w-[300px] mb-20 px-[50px]'>
+            <OverlayApp show={overlay} setShow={setOverlay} title="Modifier l'Agent" >
+                <div className='space-y-6 min-w-[300px] mb-20 '>
                     <div className='flex flex-wrap w-full gap-6'>
                         <FormLabel title='Prénom' for="agentName">
                             <FormInput type="text" name="agentName" id="agentName" value={agentName} onChange={(e) => setAgentName(e.target.value)} />
@@ -172,7 +172,7 @@ function Agent() {
                         <FormInput type="tel" name="agentPhone" id="agentPhone" value={agentPhone} onChange={(e) => setAgentPhone(e.target.value)} onBlur={(e) => setAgentPhone(formatPhone(e.target.value))} />
                     </FormLabel>
                 </div>
-                <div className='space-y-6 min-w-[300px] px-[50px]'>
+                <div className='space-y-6 min-w-[300px]'>
 
                     <FormLabel title='Poste' for="jobId">
                         <select id="jobId" name="jobId" value={jobId} onChange={(e) => setJobId(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-secondary focus:border-secondary block w-full p-2.5 capitalize">

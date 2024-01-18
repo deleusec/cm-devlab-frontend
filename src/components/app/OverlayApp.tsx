@@ -5,14 +5,22 @@ interface OverlayAppProps {
     show: boolean;
     setShow: (show: boolean) => void;
     children: React.ReactNode;
+    title?: string;
 }
 
 function OverlayApp(props: OverlayAppProps) {
+
+    const onClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {  
+        if (e.target === e.currentTarget) {
+            props.setShow(false);
+        }
+    }
+
     return (
         <div>
             {props.show && (
-                <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center'>
-                    <div className='w-[80%] h-[80%] bg-white rounded-xl p-[15px] pr-[2px]'>
+                <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center cursor-pointer' onClick={onClickOutside}>
+                    <div className='w-[80%] h-[80%] bg-white rounded-xl p-[15px] pr-[2px] cursor-auto'>
 
                         <OverlayScrollbarsComponent element='div' options={{ scrollbars: { autoHide: 'scroll' } }} defer className='max-h-full pr-[8px]'>
                             <div className="pb-[20px]">
@@ -21,8 +29,10 @@ function OverlayApp(props: OverlayAppProps) {
                                         <XMarkIcon className='h-6 w-6 text-secondary' />
                                     </button>
                                 </div>
-
-                                {props.children}
+                                <div className="px-[50px]">
+                                    <h1 className='text-xl font-semibold mb-6'>{props.title}</h1>
+                                    {props.children}
+                                </div>
                             </div>
                         </OverlayScrollbarsComponent>
                     </div>
