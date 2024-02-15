@@ -13,7 +13,7 @@ export default function JobCard({ jobs }: { jobs: Job[] }) {
     return stats && (
         <div className="bg-white p-6 rounded-xl w-1/2 space-y-6">
             <div>
-                <h4 className="mb-6">Moyenne des score métier :</h4>
+                <h4 className="mb-6">Moyenne des scores métiers :</h4>
                 <span className="font-semibold text-5xl">{stats.avg}</span>
             </div>
             <div className="w-full border border-gray-200"></div>

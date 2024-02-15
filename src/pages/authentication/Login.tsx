@@ -10,7 +10,7 @@ function Login() {
                 <h1>Se connecter</h1>
                 <AuthFormInput type="email" placeholder="email" />
                 <AuthFormInput type="password" placeholder="password" />
-                <AuthFormButton text="Se connecter" theme="dark" />      
+                <AuthFormButton text="Se connecter" theme="dark"/>      
                 <Link to={"/forgot-password"} className="text-center text-secondary font-semibold">Mot de passe oublié ?</Link>
             </div>
         </div>

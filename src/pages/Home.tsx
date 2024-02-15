@@ -36,11 +36,11 @@ function Home() {
                 <JobCard jobs={jobs}/>
                 <div className="bg-white p-6 rounded-xl w-2/6 space-y-6">
                     <div>
-                        <h4 className="mb-6">Agent ajoutés :</h4>
+                        <h4 className="mb-6">Agents ajoutés :</h4>
                         <span className="font-semibold text-5xl">{agents.length}</span>
                     </div>
                     <div>
-                        <h4 className="mb-6">Métier ajoutés :</h4>
+                        <h4 className="mb-6">Métiers ajoutés :</h4>
                         <span className="font-semibold text-5xl">{jobs.length}</span>
                     </div>
                 </div>

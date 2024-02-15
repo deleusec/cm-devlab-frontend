@@ -9,11 +9,13 @@ import axios from 'axios';
 import { GridColDef } from '@mui/x-data-grid';
 import Agent from '@/types/Agent';
 import formatDate from '@/utils/formatDate';
+import colorScore from '@/utils/colorScore';
 
 function Agents() {
     const [content, setContent] = useState<'list' | 'stats' | 'bookmarks'>('list');
     const [searchAgent, setSearchAgent] = useState('');
-    const [agents, setAgents] = useState([]);
+    const [agents, setAgents] = useState<Agent[]>([]);
+    const [scores, setScores] = useState<number[]>([]);
 
     const handleSearch = async (value: string) => {
         setSearchAgent(value);
@@ -33,14 +35,13 @@ function Agents() {
                 const fullName = `${agent.firstname} ${agent.lastname}`;
                 return fullName.toLowerCase().includes(value.toLowerCase()) || agent.email?.toLowerCase().includes(value.toLowerCase()) || agent.phone?.toLowerCase().includes(value.toLowerCase()) || agent.birthdate.toLowerCase().includes(value.toLowerCase());
             });
-            setAgents(filteredAgents);
+            setAgents(filteredAgents.sort((a: Agent, b: Agent) => a.wear_score - b.wear_score).reverse());
         });
     }
 
     useEffect(() => {
         axios.get('http://localhost:3011/agents').then((res) => {
             res.data.forEach((agent: Agent) => {
-                // calculate age, and format birthdate and contract dates with dd/mm/yyyy and 00/00/0000
                 const birthdate = new Date(agent.birthdate);
                 const contract_start = new Date(agent.contract_start);
                 const contract_end = new Date(agent.contract_end);
@@ -51,25 +52,38 @@ function Agents() {
                 if (agent.contract_end) {
                     agent.contract_end = formatDate(contract_end);
                 }
-                               
+
             }
             );
-            setAgents(res.data);
+            setAgents(res.data.sort((a: Agent, b: Agent) => a.wear_score - b.wear_score).reverse());
+            setScores(res.data.map((agent: Agent) => agent.wear_score));
         });
     }, []);
 
     const columns: GridColDef[] = [
-        { field: 'firstname', headerName: 'Prénom', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
-        { field: 'lastname', headerName: 'Nom', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'firstname', headerName: 'Prénom', flex: 1, minWidth: 100, maxWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'lastname', headerName: 'Nom', flex: 1, minWidth: 100, maxWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
         { field: 'birthdate', headerName: 'Date de naissance', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white', valueGetter: (params) => params.row.birthdate + ' (' + params.row.age + 'ans)' },
-        { field: 'email', headerName: 'Email', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
-        { field: 'phone', headerName: 'Téléphone', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
-        { field: 'agent_score', headerName: 'Score agent', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white', valueFormatter: (params) => params.value.toFixed(2) },
-        { field: 'wear_score', headerName: 'Score usure', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white', valueFormatter: (params) => params.value.toFixed(2) },
+        { field: 'email', headerName: 'Email', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'phone', headerName: 'Téléphone', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
+        {
+            field: 'wear_score', headerName: 'Score usure', minWidth: 100, editable: false, headerClassName: 'bg-secondary text-white', valueFormatter: (params) => params.value.toFixed(2), align: 'center', renderCell(params) {
+                const color = colorScore(params.value, scores);
+                return (
+                    <div className='flex justify-center items-center h-full w-full'>
+                        <div className=' text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-opacity-10' style={{ backgroundColor: color.backgroundColor + "22", border: "1px solid " + color.textColor }}>
+                            <span style={{ color: color.textColor }}>{params.value.toFixed(1)}</span>
+                        </div>
+                    </div>
+                )
+
+            },
+        },
     ];
+
     return (
         <>
-            <div className='flex flex-col gap-3 p-[50px]'>
+            <div className='flex flex-col gap-3 p-[50px] '>
                 <div className='flex gap-3'>
                     <UsersIcon className='w-5 stroke-2' />
                     <h2>Agents</h2>

@@ -8,22 +8,37 @@ import DataTable from '@/components/app/DataTable';
 import axios from 'axios';
 import SearchInputApp from '@/components/app/SearchInputApp';
 import Job from '@/types/Job';
+import colorScore from '@/utils/colorScore';
 
 function Jobs() {
     const [content, setContent] = useState<'list' | 'stats'>('list');
     const [jobs, setJobs] = useState([]);
     const [searchJob, setSearchJob] = useState('');
+    const [scores, setScores] = useState<number[]>([]);
 
     useEffect(() => {
         axios.get('http://localhost:3011/jobs').then((res) => {
-            setJobs(res.data);
+            setJobs(res.data.sort((a: Job, b: Job) => a.job_score - b.job_score).reverse());
+            setScores(res.data.map((job: Job) => job.job_score));
         });
     }, []);
 
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'Nom du métier', flex: 1, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
-        { field: 'description', headerName: 'Description', flex: 2, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white'},
-        { field: 'job_score', headerName: 'Score de pénibilité', type: 'number', minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'description', headerName: 'Description', flex: 2, minWidth: 150, editable: false, headerClassName: 'bg-secondary text-white' },
+        {
+            field: 'job_score', headerName: 'Score de pénibilité', type: 'number', minWidth: 150, headerAlign:'center', editable: false, headerClassName: 'bg-secondary text-white', renderCell(params) {
+                const color = colorScore(params.value, scores);
+                return (
+                    <div className='flex justify-center items-center h-full w-full'>
+                        <div className=' text-white text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-opacity-10' style={{ backgroundColor: color.backgroundColor + "22", border: "1px solid " + color.textColor }}>
+                            <span style={{ color: color.textColor }}>{params.value}</span>
+                        </div>
+                    </div>
+                )
+
+            },
+        },
     ];
 
     const handleSearch = async (value: string) => {
@@ -32,7 +47,7 @@ function Jobs() {
             const filteredJobs = res.data.filter((job: Job) => {
                 return job.name.toLowerCase().includes(value.toLowerCase());
             });
-            setJobs(filteredJobs);
+            setJobs(filteredJobs.sort((a: Job, b: Job) => a.job_score - b.job_score).reverse());
         });
     }
 
