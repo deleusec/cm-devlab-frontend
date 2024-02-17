@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import CardApp from "@/components/app/CardApp";
-import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import OverlayApp from "@/components/app/OverlayApp";
 import FormLabel from "@/components/form/FormLabel";
 import FormButton from "@/components/form/FormButton";
@@ -15,6 +15,7 @@ function Agent() {
     const { id } = useParams();
     const [agent, setAgent] = useState({} as Agent);
     const [overlay, setOverlay] = useState(false);
+    const [overlayDelete, setOverlayDelete] = useState(false);
 
     const [agentName, setAgentName] = useState('');
     const [agentLastName, setAgentLastName] = useState('');
@@ -104,9 +105,14 @@ function Agent() {
                     </div>
                     <div className="flex gap-3 relative">
                         <CardApp>
-                            <button className='absolute right-4 top-4 rounded-full p-2' onClick={() => setOverlay(true)} title="Modifier">
-                                <PencilSquareIcon className='h-6 w-6 text-secondary' />
-                            </button>
+                            <div className={"flex absolute right-4 top-4 rounded-full p-2 space-x-2"}>
+                                <button onClick={() => setOverlay(true)} title="Modifier">
+                                    <PencilSquareIcon className='h-6 w-6 text-secondary' />
+                                </button>
+                                <button onClick={() => setOverlayDelete(true)} title="Supprimer">
+                                    <TrashIcon className='h-6 w-6 text-secondary' />
+                                </button>
+                            </div>
                             <div className='flex flex-col gap-3'>
                                 <div className='flex gap-3'>
                                     <h2>{agent.firstname} {agent.lastname}</h2>
@@ -149,6 +155,19 @@ function Agent() {
                     </div>
                 </div>
             </div>
+            <OverlayApp show={overlayDelete} setShow={setOverlayDelete} title="Supprimer l'Agent" size="small">
+                <div className='space-y-6 min-w-[300px]'>
+                    <p>Voulez-vous vraiment supprimer cet agent ?</p>
+                    <div className='flex justify-center gap-2 py-5'>
+                        <FormButton width={"full"} theme="light" onClick={() => setOverlayDelete(false)}>Annuler</FormButton>
+                        <FormButton width={"full"} color={"red"} onClick={() => {
+                            axios.delete(`http://localhost:3011/agents/${id}`).then(() => {
+                                navigate('/agents');
+                            });
+                        }}>Supprimer</FormButton>
+                    </div>
+                </div>
+            </OverlayApp>
             <OverlayApp show={overlay} setShow={setOverlay} title="Modifier l'Agent" >
                 <div className='space-y-6 min-w-[300px] mb-20 '>
                     <div className='flex flex-wrap w-full gap-6'>

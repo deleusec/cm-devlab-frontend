@@ -16,6 +16,7 @@ function Agents() {
     const [searchAgent, setSearchAgent] = useState('');
     const [agents, setAgents] = useState<Agent[]>([]);
     const [scores, setScores] = useState<number[]>([]);
+    const [jobs, setJobs] = useState<any[]>([]);
 
     const handleSearch = async (value: string) => {
         setSearchAgent(value);
@@ -49,6 +50,7 @@ function Agents() {
                 agent.age = age;
                 agent.birthdate = formatDate(birthdate);
                 agent.contract_start = formatDate(contract_start);
+                agent.job_name = agent.Job.name;
                 if (agent.contract_end) {
                     agent.contract_end = formatDate(contract_end);
                 }
@@ -57,15 +59,16 @@ function Agents() {
             );
             setAgents(res.data.sort((a: Agent, b: Agent) => a.wear_score - b.wear_score).reverse());
             setScores(res.data.map((agent: Agent) => agent.wear_score));
-        });
+        })
     }, []);
 
     const columns: GridColDef[] = [
         { field: 'firstname', headerName: 'Prénom', flex: 1, minWidth: 100, maxWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
         { field: 'lastname', headerName: 'Nom', flex: 1, minWidth: 100, maxWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
-        { field: 'birthdate', headerName: 'Date de naissance', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white', valueGetter: (params) => params.row.birthdate + ' (' + params.row.age + 'ans)' },
-        { field: 'email', headerName: 'Email', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'age', headerName: 'Âge', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white', valueGetter: (params) => params.row.age+' ans'},
+        { field: 'email', headerName: 'Email', flex: 2, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
         { field: 'phone', headerName: 'Téléphone', flex: 1, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white' },
+        { field: 'job_name', headerName: 'Métiers', flex: 2, minWidth: 200, editable: false, headerClassName: 'bg-secondary text-white', valueGetter: (params) => params.row.Job.name ? params.row.Job.name : 'Aucun' },
         {
             field: 'wear_score', headerName: 'Score usure', minWidth: 100, editable: false, headerClassName: 'bg-secondary text-white', valueFormatter: (params) => params.value.toFixed(2), align: 'center', renderCell(params) {
                 const color = colorScore(params.value, scores);

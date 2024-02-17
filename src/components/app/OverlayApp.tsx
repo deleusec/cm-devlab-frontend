@@ -6,6 +6,11 @@ interface OverlayAppProps {
     setShow: (show: boolean) => void;
     children: React.ReactNode;
     title?: string;
+    size?: 'small' | 'large';
+}
+
+OverlayApp.defaultProps = {
+    size: 'large'
 }
 
 function OverlayApp(props: OverlayAppProps) {
@@ -20,7 +25,7 @@ function OverlayApp(props: OverlayAppProps) {
         <div>
             {props.show && (
                 <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center cursor-pointer' onClick={onClickOutside}>
-                    <div className='w-[80%] h-[80%] bg-white rounded-xl p-[15px] pr-[2px] cursor-auto'>
+                    <div className={`bg-white rounded-xl p-[15px] pr-[2px] cursor-auto min-w-[800px] ${props.size === 'large' && 'w-[80%] h-[80%]'}`}>
 
                         <OverlayScrollbarsComponent element='div' options={{ scrollbars: { autoHide: 'scroll' } }} defer className='max-h-full pr-[8px]'>
                             <div className="pb-[20px]">

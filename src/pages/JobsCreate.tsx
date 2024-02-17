@@ -54,7 +54,7 @@ function JobsCreate() {
             <div className='mb-[20px]'>
                 <BackLinkApp />
             </div>
-            <CardApp title="Nouveau Job">
+            <CardApp title="Nouveau Métier">
                 <div className='space-y-6 lg:w-1/2 min-w-[300px] mb-20'>
                     <FormLabel title='Nom' for="jobName">
                         <FormInput type="text" name="jobName" id="jobName" value={jobName} onChange={(e) => setJobName(e.target.value)} />
