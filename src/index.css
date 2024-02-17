@@ -4,20 +4,53 @@
 @tailwind utilities;
 
 @layer base {
-    /* Refactor basic elements here */
-    body {
-        @apply font-poppins;
-    }
+  /* Refactor basic elements here */
+  body {
+    @apply font-poppins;
+  }
 
-    h1 {
-        @apply text-2xl md:text-3xl font-light text-secondary;
-    }
+  h1 {
+    @apply text-2xl md:text-3xl font-light text-secondary;
+  }
 
-    h2 {
-        @apply text-xl md:text-2xl font-semibold text-secondary;
-    }
+  h2 {
+    @apply text-xl md:text-2xl font-semibold text-secondary;
+  }
 
-    h3 {
-        @apply text-lg md:text-xl font-semibold text-secondary;
-    }
+  h3 {
+    @apply text-lg md:text-xl font-semibold text-secondary;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl text-secondary;
+  }
+}
+
+.MuiDataGrid-main ::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+.MuiDataGrid-main ::-webkit-scrollbar-track {
+  @apply bg-gray-light;
+}
+
+.MuiDataGrid-main ::-webkit-scrollbar-thumb {
+  @apply bg-gray;
+}
+
+.MuiDataGrid-main ::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-dark;
+}
+
+.MuiDataGrid-columnHeaders {
+  @apply bg-secondary text-white;
+}
+
+.MuiDataGrid-row:hover {
+  @apply !bg-gray-50 cursor-pointer;
+}
+
+.MuiDataGrid-cell:focus,
+.MuiDataGrid-cell:focus-within {
+    @apply !outline-none;
 }
