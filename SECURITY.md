@@ -16,7 +16,7 @@ La sécurité de notre projet est une priorité absolue. Si vous découvrez une 
 **Veuillez suivre ces étapes pour le signalement :**
 
 1. **Ne divulguez pas publiquement la faille.** Cela inclut le non-postage sur les réseaux sociaux, forums ou tout autre lieu public avant que nous ayons eu la chance de résoudre le problème.
-2. **Envoyez votre rapport par email** à notre équipe de sécurité à `security@example.com` (remplacez cela par votre véritable adresse email de contact pour la sécurité). Si possible, veuillez chiffrer votre message en utilisant notre clé publique PGP.
+2. **Envoyez votre rapport par email** à notre équipe de sécurité à `corentin.deleuse@edu.devinci.fr` (remplacez cela par votre véritable adresse email de contact pour la sécurité). Si possible, veuillez chiffrer votre message en utilisant notre clé publique PGP.
 3. **Décrivez le problème de la manière la plus détaillée possible.** Fournissez les étapes pour reproduire la vulnérabilité et, si possible, une preuve de concept.
 
 **Ce à quoi vous pouvez vous attendre après avoir soumis un rapport :**
