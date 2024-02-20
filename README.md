@@ -2,8 +2,6 @@
 
 ## Dashboard de gestion de l'usure professionnelle des salariés de Châtenay-Malabry
 
-La ville de Châtenay-Malabry intervient dans le domaine des compétences règlementaires attribuées aux municipalités. Son action se concentre sur la fourniture de services et la mise en œuvre de politiques publiques visant à servir l'intérêt général de l'ensemble de ses habitants.
-
 ### Sommaire
 
 - [Introduction](#introduction)
